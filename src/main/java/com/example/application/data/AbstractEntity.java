@@ -1,5 +1,7 @@
 package com.example.application.data;
 
+import java.time.LocalDate;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -13,6 +15,8 @@ public abstract class AbstractEntity {
     @GeneratedValue
     @Nonnull
     private Integer id;
+    
+    private LocalDate createdDate;
 
     public Integer getId() {
         return id;
@@ -22,7 +26,15 @@ public abstract class AbstractEntity {
         this.id = id;
     }
 
-    @Override
+    public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	@Override
     public int hashCode() {
         if (id != null) {
             return id.hashCode();
